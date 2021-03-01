@@ -1,0 +1,20 @@
+spring:
+  # DB 커넥션 설정 ~
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/Spring/firebucks
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create # 자동 테이블 생성해줌 (기존 가지고 있던 정보 모두 지우고)
+    properties:
+      hibernate:
+        #show_sql: true -> 로거가 아닌 시스템출력을 통해 출력됨...실제상황에서 사용 X
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug # hibernate가 생성하는 모든 sql이 보이게 됨 (로거를 통한 출력)
+    org.hibernate.type: trace
