@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter
-@Builder
+@Setter
 public class Board {
     @Id
     @GeneratedValue
@@ -24,10 +24,6 @@ public class Board {
     private String description;
 
     private BoardType boardType;
-
-    protected Board() {
-
-    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

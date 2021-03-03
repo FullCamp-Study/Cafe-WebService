@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@Builder
+
 public class Comment {
     @Id
     @GeneratedValue
