@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
 
 public class Comment {
     @Id
@@ -20,10 +21,6 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
-
-    protected Comment() {
-
-    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
