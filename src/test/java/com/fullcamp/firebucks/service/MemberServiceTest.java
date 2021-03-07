@@ -47,7 +47,7 @@ public class MemberServiceTest {
         //given
         Address address1 = Address.builder().city("a").street("b").zipcode("c").build();
         MemberDTO memberDTO1 = MemberDTO.builder()
-                .name("park")
+                .name("park일12")
                 .password("445511421234")
                 .email("pyh@gmai.com")
                 .address(address1)
@@ -57,7 +57,7 @@ public class MemberServiceTest {
         MemberDTO memberDTO2 = MemberDTO.builder()
                 .name("park")
                 .password("123441241")
-                .email("14241p1yh@gmai.com")
+                .email("pyh@gmai.com")
                 .address(address2)
                 .build();
 
