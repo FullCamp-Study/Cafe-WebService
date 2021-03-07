@@ -30,6 +30,7 @@ public class Board {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @Builder.Default
     @OneToMany(mappedBy = "board") // 멤버는 여러 개의 주문을 가짐.
     private List<Comment> comments = new ArrayList<>();
 

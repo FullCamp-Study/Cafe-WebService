@@ -26,12 +26,15 @@ public class Member {
 
     private String name;
 
+    @Builder.Default
     @OneToMany(mappedBy = "member") // 멤버는 여러 개의 주문을 가짐.
     private List<Order> orders = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "member") // 멤버는 여러 개의 주문을 가짐.
     private List<Board> boards = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<Comment> comments = new ArrayList<>();
 
