@@ -1,20 +1,21 @@
 package com.fullcamp.firebucks.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 
 @Embeddable
 @Getter
+@Builder
+@NoArgsConstructor
 public class Address {
 
     private String city;
     private String street;
     private String zipcode;
-
-    // JPA 스펙상 존재하는 기본 생성자.
-    protected Address() {
-    }
 
     public Address(String city, String street, String zipcode) {
         this.city = city;

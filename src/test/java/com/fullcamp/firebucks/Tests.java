@@ -1,10 +1,13 @@
 package com.fullcamp.firebucks;
+import com.fullcamp.firebucks.domain.Address;
 import com.fullcamp.firebucks.domain.Board;
 import com.fullcamp.firebucks.domain.Comment;
 import com.fullcamp.firebucks.domain.Member;
+import com.fullcamp.firebucks.dto.MemberDTO;
 import com.fullcamp.firebucks.repository.BoardRepository;
 import com.fullcamp.firebucks.repository.CommentRepository;
 import com.fullcamp.firebucks.repository.MemberRepository;
+import com.fullcamp.firebucks.service.MemberService;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,14 +38,15 @@ public class Tests {
     @Autowired
     private CommentRepository commentRepository;
 
+
     @Test
     public void test() throws Exception {
 
         //given
-        Member member = new Member();
-        member.setName("park");
+        //Member member = new Member();
+        //member.setName("park");
 
-        memberRepository.save(member);
+        //memberRepository.save(member);
 
 //        Board board = Board.builder().member(member).
 
@@ -55,17 +59,17 @@ public class Tests {
 
     @Test
     public void 게시판() throws Exception{
-        Member member = new Member();
-        member.setName("park");
+        Member member = Member.builder().build();
+        //member.setName("park");
 
-        memberRepository.save(member);
+        //memberRepository.save(member);
 
-        Board board1 = new Board();
+        Board board1 = Board.builder().build();
         board1.setTitle("하이");
         board1.setDescription("하이하이");
         board1.setMember(member);
 
-        Board board2 = new Board();
+        Board board2 = Board.builder().build();
         board2.setTitle("바이");
         board2.setDescription("바이바이");
         board2.setMember(member);
@@ -84,12 +88,12 @@ public class Tests {
 
     @Test
     public void 댓글() throws Exception{
-        Member member = new Member();
-        member.setName("park");
+        Member member = Member.builder().build();
+        //member.setName("park");
 
         memberRepository.save(member);
 
-        Board board1 = new Board();
+        Board board1 = Board.builder().build();
         board1.setTitle("하이");
         board1.setDescription("하이하이");
         board1.setMember(member);
@@ -97,8 +101,8 @@ public class Tests {
         em.persist(member);
         em.persist(board1);
 
-        Comment comment1 = new Comment();
-        Comment comment2 = new Comment();
+        Comment comment1 = Comment.builder().build();
+        Comment comment2 = Comment.builder().build();
         comment1.setDescription("댓글1");
         comment2.setDescription("댓글2");
         comment1.setBoard(board1);

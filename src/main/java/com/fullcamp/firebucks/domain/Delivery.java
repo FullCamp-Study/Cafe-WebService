@@ -2,8 +2,7 @@ package com.fullcamp.firebucks.domain;
 
 
 import com.fullcamp.firebucks.domain.enums.DeliveryStatus;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,6 +10,9 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Delivery {
     @Id @GeneratedValue
     private Long id;
@@ -23,4 +25,5 @@ public class Delivery {
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus deliveryStatus; // READY, COMP
+
 }

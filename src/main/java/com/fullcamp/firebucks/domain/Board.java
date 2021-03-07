@@ -1,9 +1,7 @@
 package com.fullcamp.firebucks.domain;
 
 import com.fullcamp.firebucks.domain.enums.BoardType;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -13,6 +11,9 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Board {
     @Id
     @GeneratedValue
@@ -29,10 +30,12 @@ public class Board {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @Builder.Default
     @OneToMany(mappedBy = "board") // 멤버는 여러 개의 주문을 가짐.
     private List<Comment> comments = new ArrayList<>();
 
     private LocalDateTime createdAt;
 
     private LocalDateTime modifiedAt;
+
 }

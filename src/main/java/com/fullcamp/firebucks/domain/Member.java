@@ -1,8 +1,6 @@
 package com.fullcamp.firebucks.domain;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
@@ -12,7 +10,9 @@ import java.util.List;
 
 @Entity
 @Getter
-@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Member {
 
     @Id @GeneratedValue
@@ -25,12 +25,15 @@ public class Member {
 
     private String name;
 
+    @Builder.Default
     @OneToMany(mappedBy = "member") // 멤버는 여러 개의 주문을 가짐.
     private List<Order> orders = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "member") // 멤버는 여러 개의 주문을 가짐.
     private List<Board> boards = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "member")
     private List<Comment> comments = new ArrayList<>();
 
@@ -40,4 +43,5 @@ public class Member {
     private LocalDateTime createdAt;
 
     private LocalDateTime modifiedAt;
+
 }

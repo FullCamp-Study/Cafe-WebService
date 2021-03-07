@@ -1,13 +1,15 @@
 package com.fullcamp.firebucks.domain;
 
 import com.fullcamp.firebucks.domain.items.Item;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderItem {
 
     @Id @GeneratedValue
