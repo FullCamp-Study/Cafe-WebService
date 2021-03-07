@@ -1,5 +1,6 @@
 package com.fullcamp.firebucks.domain;
 
+import com.fullcamp.firebucks.dto.MemberDTO;
 import lombok.*;
 import org.apache.tomcat.jni.Local;
 
@@ -44,4 +45,9 @@ public class Member {
 
     private LocalDateTime modifiedAt;
 
+    public void updateMember(MemberDTO memberDTO) {
+        this.name = memberDTO.getName();
+        this.address = memberDTO.getAddress();
+        this.password = memberDTO.getPassword();
+    }
 }

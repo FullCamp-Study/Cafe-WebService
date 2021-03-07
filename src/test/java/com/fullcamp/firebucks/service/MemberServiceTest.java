@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -67,5 +68,25 @@ public class MemberServiceTest {
 
         //then 안터지면 실패
         fail("중복 회원 검사 실패!!");
+    }
+
+    @Test
+    @Rollback(value = false)
+    public void 회원_수정_테스트() throws Exception {
+        //given
+        Address address1 = Address.builder().city("a").street("b").zipcode("c").build();
+        MemberDTO memberDTO1 = MemberDTO.builder()
+                .name("park일12")
+                .password("445511421234")
+                .email("pyh1@gmai.com")
+                .address(address1)
+                .build();
+        //when
+        Long idx = memberService.join(memberDTO1);
+
+        memberDTO1.setId(idx);
+
+        memberService.updateMember(memberDTO1);
+        //then
     }
 }

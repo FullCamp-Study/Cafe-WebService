@@ -29,7 +29,31 @@ public class MemberService {
         return entity.getId();
     }
 
-    // 테스트 완
+    /**
+     * 회원 전체 조회
+     * @return list
+     */
+    public List<Member> findMembers() {
+        return memberRepository.findAll();
+    }
+
+    /**
+     * 회원 단권 조
+     * @param id
+     * @return
+     */
+    public Member findOne(Long id) {
+        return memberRepository.findOne(id);
+    }
+
+    @Transactional
+    public void updateMember(MemberDTO memberDTO) {
+        Member member = memberRepository.findOne(memberDTO.getId());
+        member.updateMember(memberDTO);
+    }
+
+
+    // 테스트 완료
     private Member dtoToEntity(MemberDTO dto) {
         Member member = Member.builder()
                 .name(dto.getName())
@@ -42,7 +66,7 @@ public class MemberService {
     }
 
     /**
-     * 중복 이메일 검증
+     * 중복 메일 검증
      * @param member
      */
     private void validateDuplicateMember(Member member) {
@@ -52,22 +76,7 @@ public class MemberService {
         }
     }
 
-    /**
-     * 회원 전체 조회
-     * @return list
-     */
-    public List<Member> findMembers() {
-        return memberRepository.findAll();
-    }
 
-    /**
-     * 회원
-     * @param id
-     * @return
-     */
-    public Member findOne(Long id) {
-        return memberRepository.findOne(id);
-    }
 
 
 }
