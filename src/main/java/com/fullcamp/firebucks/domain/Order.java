@@ -26,7 +26,6 @@ public class Order {
     @JoinColumn(name = "member_id") // 매핑을 어떤 컬럼으로 할 것인가 FK가 무엇이 될것인가.
     private Member member;
 
-    @Builder.Default
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
