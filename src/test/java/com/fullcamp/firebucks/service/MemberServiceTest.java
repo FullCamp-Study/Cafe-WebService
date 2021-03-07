@@ -86,7 +86,33 @@ public class MemberServiceTest {
 
         memberDTO1.setId(idx);
 
-        memberService.updateMember(memberDTO1);
+
         //then
+        memberService.updateMember(memberDTO1);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void 회원_삭제_테스트() throws Exception {
+        //given
+        Address address = Address.builder().city("a").street("b").zipcode("c").build();
+        MemberDTO memberDTO = MemberDTO.builder()
+                .name("park")
+                .password("1234")
+                .email("pyh@gmai.com")
+                .address(address)
+                .build();
+
+        Long idx = memberService.join(memberDTO);
+        //when
+        System.out.println("----------------------------");
+        System.out.println(memberService.findOne(idx));
+        memberService.deleteMember(idx);
+
+
+        System.out.println("----------------------------");
+        memberService.findOne(idx);
+
+        //then
+        fail("null pointer 예외가 발생해야 합니다!");
     }
 }

@@ -43,13 +43,22 @@ public class MemberService {
      * @return
      */
     public Member findOne(Long id) {
-        return memberRepository.findOne(id);
+        Member member = memberRepository.findOne(id);
+        if (member == null) {
+            throw new NullPointerException("존재하지 않는 회원입니다.");
+        }
+        return member;
     }
 
     @Transactional
     public void updateMember(MemberDTO memberDTO) {
         Member member = memberRepository.findOne(memberDTO.getId());
         member.updateMember(memberDTO);
+    }
+
+    @Transactional
+    public void deleteMember(Long id) {
+        memberRepository.deleteById(id);
     }
 
 
@@ -75,8 +84,4 @@ public class MemberService {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
-
-
-
-
 }
