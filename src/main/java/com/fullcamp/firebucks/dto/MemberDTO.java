@@ -17,7 +17,6 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-@Valid
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberDTO {
