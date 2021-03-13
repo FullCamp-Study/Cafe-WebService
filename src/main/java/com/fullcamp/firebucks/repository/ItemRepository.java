@@ -13,6 +13,10 @@ public class ItemRepository {
 
     private final EntityManager em;
 
+    public void deleteById(Long id) {
+        em.remove(findOne(id));
+    }
+
     public void save(Item item) {
         if (item.getId() == null) {
             em.persist(item);
@@ -28,5 +32,10 @@ public class ItemRepository {
 
     public List<Item> findAll() {
         return em.createQuery("select i from Item i",Item.class).getResultList();
+    }
+
+    public List<Item> findByName(String name) {
+        return em.createQuery("select i from Item i where i.name = :name", Item.class).
+                setParameter("name", name).getResultList();
     }
 }

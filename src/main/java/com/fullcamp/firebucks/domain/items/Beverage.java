@@ -1,7 +1,7 @@
 package com.fullcamp.firebucks.domain.items;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -9,9 +9,13 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("beverage")
 @Getter
-@Setter
-public class beverage extends Item{
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Beverage extends Item {
 
     private int caffein;
     private int iced;
+
+
 }

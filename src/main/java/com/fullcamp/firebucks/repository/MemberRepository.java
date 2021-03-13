@@ -43,11 +43,5 @@ public class MemberRepository {
 
     public void deleteById(Long id) {
         em.remove(findOne(id));
-//        em.getTransaction().begin();
-//        int id1 = em.createQuery("delete from Member m where m.id = :id",
-//                Member.class)
-//                .setParameter("id", id).executeUpdate();
-//        em.getTransaction().commit();
-//        return id1;
     }
 }
