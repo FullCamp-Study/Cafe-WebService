@@ -1,5 +1,6 @@
 package com.fullcamp.firebucks.domain.items;
 
+import com.fullcamp.firebucks.dto.ItemDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,8 @@ public class Goods extends Item{
     private String company;
 
     @Override
-    public void update(String name, int price, int Quantity, String company) {
-        super.update(name, price, Quantity);
-        this.company = company;
+    public void update(ItemDTO itemDTO) {
+        super.update(itemDTO);
+        this.company = itemDTO.getCompany();
     }
 }

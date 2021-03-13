@@ -24,26 +24,26 @@ public class ItemService {
      * @param itemDTO
      */
     @Transactional
-    public void saveItem(ItemDTO itemDTO) {
+    public Long saveItem(ItemDTO itemDTO) {
         validateDuplicateMember(itemDTO.getName());
 
         Item item = dtoToEntity(itemDTO);
+        System.out.println("------------------------");
+        System.out.println(item);
         itemRepository.save(item);
+        return item.getId();
     }
 
     // 변경 감지를 통한 변
+
     /**
-     * 상품 변경
-     * @param itemId
-     * @param name
-     * @param price
-     * @param Quantity
+     *
+     * @param itemDTO
      */
     @Transactional
     public void updateItem(ItemDTO itemDTO) {
         Item findItem = itemRepository.findOne(itemDTO.getId());
-        if (findItem.getClass().equals(Goods.class))
-            findItem.update(itemDTO.getName(), itemDTO.getPrice(), itemDTO.getStockQuantity(), itemDTO.getCompany());
+        findItem.update(itemDTO);
         // 트랜잭션 안에서 다시 조회한 객체를 변경 하면 커밋 시점에 더티 체킹에 의해 DB에 UPDATE 쿼리가 날라간다.
     }
 

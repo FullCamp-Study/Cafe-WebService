@@ -1,5 +1,6 @@
 package com.fullcamp.firebucks.domain.items;
 
+import com.fullcamp.firebucks.dto.ItemDTO;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -25,12 +26,12 @@ public abstract class Item { // 따로 구현체를 가질 것이므로 추상�
 
     private int stockQuantity;
 
-    public void update(String name, int price, int Quantity) {
-        if (!this.name.equals(name))
-            this.name = name;
-        if (this.price != price)
-            this.price = price;
-        if (this.stockQuantity != Quantity)
-            this.stockQuantity = Quantity;
+    public void update(ItemDTO itemDTO) {
+        if (!this.name.equals(itemDTO.getName()))
+            this.name = itemDTO.getName();
+        if (this.price != itemDTO.getPrice())
+            this.price = itemDTO.getPrice();
+        if (this.stockQuantity != itemDTO.getStockQuantity())
+            this.stockQuantity = itemDTO.getStockQuantity();
     }
 }

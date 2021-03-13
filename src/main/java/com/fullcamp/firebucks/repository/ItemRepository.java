@@ -18,6 +18,7 @@ public class ItemRepository {
     }
 
     public void save(Item item) {
+        System.out.println("AAAA" + item.getId());
         if (item.getId() == null) {
             em.persist(item);
         }
