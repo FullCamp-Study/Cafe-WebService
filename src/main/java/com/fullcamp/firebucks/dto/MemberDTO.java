@@ -21,7 +21,6 @@ import java.util.List;
 @AllArgsConstructor
 public class MemberDTO {
 
-
     private Long id;
 
     @Email

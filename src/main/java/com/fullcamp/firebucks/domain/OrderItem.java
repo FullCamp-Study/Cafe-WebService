@@ -26,4 +26,35 @@ public class OrderItem {
 
     private int OrderPrice; // 주문 당시 가격
     private int count; // 주문 수
+
+    //==생성 메서드==//
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count){
+        OrderItem orderItem =
+        OrderItem.builder()
+            .count(count)
+            .item(item)
+            .OrderPrice(orderPrice)
+                .build();
+
+        item.removeStock(count);
+        return orderItem;
+    }
+
+    public void setOrder(Order order){
+        this.order = order;
+    }
+
+    //==비지니스 로직==//
+    public void cancel() {
+        getItem().addStock(count);
+    }
+
+    //==조회 로직==//
+
+    /**
+     * 주문상품 전체 가격 조회
+     */
+    public int getTotalPrice() {
+        return getOrderPrice() * getCount();
+    }
 }

@@ -28,7 +28,6 @@ public class ItemService {
         validateDuplicateMember(itemDTO.getName());
 
         Item item = dtoToEntity(itemDTO);
-        System.out.println("------------------------");
         System.out.println(item);
         itemRepository.save(item);
         return item.getId();
@@ -42,7 +41,7 @@ public class ItemService {
      */
     @Transactional
     public void updateItem(ItemDTO itemDTO) {
-        Item findItem = itemRepository.findOne(itemDTO.getId());
+        Item findItem = itemRepository.findOne(itemDTO.getId()); // Goods를 찾으면 Item으로 반환되는게 아니라 Goods가 반환됨
         findItem.update(itemDTO);
         // 트랜잭션 안에서 다시 조회한 객체를 변경 하면 커밋 시점에 더티 체킹에 의해 DB에 UPDATE 쿼리가 날라간다.
     }

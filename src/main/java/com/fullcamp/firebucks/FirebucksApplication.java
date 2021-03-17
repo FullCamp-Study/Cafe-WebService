@@ -10,5 +10,4 @@ public class FirebucksApplication {
 
         SpringApplication.run(FirebucksApplication.class, args);
     }
-
 }
